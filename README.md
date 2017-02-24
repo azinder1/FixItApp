@@ -66,6 +66,6 @@ THE SOFTWARE.
 
 jobs = Job.all
 jobs.each do |job|
-  job.job_status = 0
+  job.job_status = 1
   job.save
 end

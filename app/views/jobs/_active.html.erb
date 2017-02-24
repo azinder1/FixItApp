@@ -1,5 +1,6 @@
-
-<p><%=@event.content%></p><br>
-  <%= radio_button_tag(:job, @job.id, job_status: 2) %>
-  <%= label_tag(:response1, @job.title) %>
+<%= content_tag :div , id: "job_active_" + @job.id.to_s do %>
+  <ul>
+    <li><a href="/jobs/<%= @job.id %>"><%=@job.title%></a></li>
+    <a data-remote ="true" rel ="nofollow" data-method="patch" href="/jobs/<%= @job.id %>?job_status=3" >click here if the job is complete</a>
+  </ul>
 <% end %>

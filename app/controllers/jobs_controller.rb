@@ -25,7 +25,6 @@ class JobsController < ApplicationController
   def update
     @job = Job.find(params[:id])
     if current_worker
-      binding.pry
       @job[:job_status] = params[:job_status]
       @job[:worker_id] = current_worker.id
       if @job.save
@@ -45,4 +44,6 @@ private
   def job_params
     params.require(:job).permit(:title, :description)
   end
+
+
 end

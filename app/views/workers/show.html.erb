@@ -1,42 +1,40 @@
 <h1><%= current_worker.email %>'s claimed jobs:</h1>
 
 <h3>Pending:</h3>
-<% current_worker.jobs.each do |job| %>
-  <%= form_tag job, method: "put", remote: true  do%>
-    <%= content_tag :div , id: "job_pending_" + job.id.to_s do %>
-      <% if job.job_status == 1  %>
-        <%= form_tag job, method: "put", remote: true  do%>
-          <%= radio_button_tag(:job, job.id) %>
-          <%= label_tag(:job, job.title) %>
-          <%=  %>
-          <%= submit_tag %>
-        <% end %>
-      <% end %>
-    <% end %>
-  <% end %>
-<% end %>
-
-<h3>Active:</h3>
-<div id= "active_jobs">
-  <ul>
-    <% current_worker.jobs.each do |job| %>
-    <%= content_tag :div , id: "job_active_" + job.id.to_s do %>
-    <% if job.job_status == 2 %>
-    <li><%= link_to job.title, job_path(job) %></li>
-    <%= link_to "click here if the job is complete", job_path(job, :job_status => 3), :method => "patch", remote: true %>
-    <% end %>
-    <% end %>
-    <% end %>
-  </ul>
-</div>
-
-<h3>Finished:</h3>
 <ul>
 <% current_worker.jobs.each do |job| %>
-  <%= content_tag :div , id: "job_complete_" + job.id.to_s do %>
-    <% if job.job_status == 3 %>
+    <% if job.job_status == 1  %>
+    <%= content_tag :div , id: "job_pending_" + job.id.to_s do %>
       <li><%= link_to job.title, job_path(job) %></li>
+      <%= link_to "click here to start job now", job_path(job, :job_status => 2), :method => "patch", remote: true %>
     <% end %>
   <% end %>
 <% end %>
 </ul>
+
+<h3>Active:</h3>
+<div id= "active_jobs">
+  <ul>
+  <% current_worker.jobs.each do |job| %>
+    <%= content_tag :div , id: "job_active_" + job.id.to_s do %>
+      <% if job.job_status == 2 %>
+        <li><%= link_to job.title, job_path(job) %></li>
+        <%= link_to "click here if the job is complete", job_path(job, :job_status => 3), :method => "patch", remote: true %>
+      <% end %>
+    <% end %>
+  <% end %>
+  </ul>
+</div>
+
+<h3>Finished:</h3>
+<div id= "completed_jobs">
+  <ul>
+  <% current_worker.jobs.each do |job| %>
+    <%= content_tag :div , id: "job_complete_" + job.id.to_s do %>
+      <% if job.job_status == 3 %>
+        <li><%= link_to job.title, job_path(job) %></li>
+      <% end %>
+    <% end %>
+  <% end %>
+  </ul>
+</div>
