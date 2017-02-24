@@ -13,8 +13,8 @@
 </ul>
 
 <h3>Active:</h3>
+<ul>
 <div id= "active_jobs">
-  <ul>
   <% current_worker.jobs.each do |job| %>
     <%= content_tag :div , id: "job_active_" + job.id.to_s do %>
       <% if job.job_status == 2 %>
@@ -23,12 +23,12 @@
       <% end %>
     <% end %>
   <% end %>
-  </ul>
 </div>
+</ul>
 
 <h3>Finished:</h3>
+<ul>
 <div id= "completed_jobs">
-  <ul>
   <% current_worker.jobs.each do |job| %>
     <%= content_tag :div , id: "job_complete_" + job.id.to_s do %>
       <% if job.job_status == 3 %>
@@ -36,5 +36,5 @@
       <% end %>
     <% end %>
   <% end %>
-  </ul>
 </div>
+</ul>

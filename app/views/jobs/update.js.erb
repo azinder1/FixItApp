@@ -1,6 +1,6 @@
 $('#job_<%= @job.id  %>').text("")
 $('#your_new_jobs').show()
-$('#signed_up_jobs').append('<li> Job2: <%= @job.title %> </li>')
+$('#signed_up_jobs').append('<%= @job.title %> </li>')
 
 <% if @job.job_status == 2 %>
   $('#job_pending_<%= @job.id  %>').text("")
