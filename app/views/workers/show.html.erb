@@ -1,7 +1,28 @@
 <h1><%= current_worker.email %>'s claimed jobs:</h1>
 
+<h3>Pending:</h3>
 <ul>
 <% current_worker.jobs.each do |job| %>
-<li><%= link_to job.title, job_path(job) %></li>
+  <% if job.job_status == 1  %>
+    <li><%= link_to job.title, job_path(job) %></li>
+  <% end %>
+<% end %>
+</ul>
+
+<h3>Active:</h3>
+<ul>
+<% current_worker.jobs.each do |job| %>
+  <% if job.job_status == 2 %>
+    <li><%= link_to job.title, job_path(job) %></li>
+  <% end %>
+<% end %>
+</ul>
+
+<h3>Finished:</h3>
+<ul>
+<% current_worker.jobs.each do |job| %>
+  <% if job.job_status == 3 %>
+    <li><%= link_to job.title, job_path(job) %></li>
+  <% end %>
 <% end %>
 </ul>
