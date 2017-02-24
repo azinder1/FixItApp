@@ -14,10 +14,17 @@ gem 'devise'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'rspec-rails'
   gem 'launchy'
-  gem 'pry'
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'pry'
+  gem 'simplecov', require: false
+  gem 'poltergeist'
+  gem 'database_cleaner'
+  gem 'simplecov', :require => false, :group => :test
+
 end
 
 group :development do

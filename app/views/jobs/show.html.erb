@@ -2,9 +2,9 @@
 
 <h3><%= @job.description %></h3>
 
-<% if @job.pending %>
-  <p>Someone has already claimed this job; it's currently pending.</p>
-<% else %>
+<% if @job.job_status = 0 %>
   <p>No one has claimed this job!</p>
+<% else %>
+<p>Someone has already claimed this job; it's currently pending.</p>
 
 <% end %>

@@ -1,0 +1,5 @@
+
+<p><%=@event.content%></p><br>
+  <%= radio_button_tag(:job, @job.id, job_status: 2) %>
+  <%= label_tag(:response1, @job.title) %>
+<% end %>

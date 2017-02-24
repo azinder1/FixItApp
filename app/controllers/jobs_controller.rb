@@ -25,7 +25,10 @@ class JobsController < ApplicationController
   def update
     @job = Job.find(params[:id])
     if current_worker
-      if @job.update(pending: true, worker_id: current_worker.id)
+      binding.pry
+      @job[:job_status] = params[:job_status]
+      @job[:worker_id] = current_worker.id
+      if @job.save
         respond_to do |format|
           format.html { redirect_to jobs_path(@job) }
           format.js
@@ -34,10 +37,6 @@ class JobsController < ApplicationController
         render :show
         flash[:notice] = "Something went wrong!"
       end
-    else
-      # We need to streamline this process better in the future! - Mr. Fix-It.
-      flash[:notice] = 'You must have a worker account to claim a job. Register for one using the link in the navbar above.'
-      redirect_to job_path(@job)
     end
   end
 
@@ -46,5 +45,4 @@ private
   def job_params
     params.require(:job).permit(:title, :description)
   end
-
 end
