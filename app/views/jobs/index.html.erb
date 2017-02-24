@@ -1,7 +1,20 @@
 <h1>Jobs</h1>
 
+<h4>Listed Jobs:</h4>
+
 <ul>
   <% @jobs.each do |job| %>
-  <li><%= link_to job.title, job_path(job) %></li>
+    <%= content_tag :div , id: "job_" + job.id.to_s do %>
+      <li><%= link_to job.title, job_path(job) %></li>
+      <% if job.pending %>
+        <p>Someone has already claimed this job; it's currently pending.</p>
+        <% else %>
+        <%= link_to "click here to claim it now", job_path(job), :method => "patch", remote: true %>
+      <% end %>
+    <% end %>
   <% end %>
 </ul>
+
+<h3>Jobs you've signed up for:</h3>
+  <ul id = 'signed_up_jobs'>
+  </ul>
