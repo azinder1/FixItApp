@@ -10,7 +10,7 @@
         <% if job.job_status == 0 %>
           <%= link_to "click here to claim it now", job_path(job, :job_status => 1), :method => "patch", remote: true %>
         <% else %>
-          <p>Someone has already claimed this job; it's currently pending.</p>
+          <p>Someone has already claimed this job.</p>
         <% end %>
       <% end %>
     <% end %>

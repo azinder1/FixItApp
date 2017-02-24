@@ -1,18 +1,7 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+@import "materialize/components/color";
+$primary-color: color("blue", "lighten-2") !default;
+$secondary-color: color("yellow", "base") !default;
+@import 'materialize';
 
 body {
   margin: 0;
@@ -23,29 +12,6 @@ body {
  .content {
    margin: 40px;
  }
-
- .navigation-menu ul {
-   list-style: none;
-   background-color: #444;
-   text-align: center;
-   margin: 0;
- }
-
-.navigation-menu li {
-  font-size: 1.2em;
-  display: inline-block;
-  width: 10%;
-}
-
-.navigation-menu a {
-  text-decoration: none;
-  color: #fff;
-  display: block;
-}
-
-.navigation-menu a:hover {
-  background-color: #f7b50c;
-}
 
 .header {
   background-color: #888;
@@ -65,4 +31,13 @@ body {
 
 #your_new_jobs {
   display: none;
+}
+.row {
+  height: 400px;
+  overflow: scroll;
+}
+
+.jobs_page {
+  margin-bottom: 50px;
+  padding-bottom: 50px;
 }
