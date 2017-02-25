@@ -13,6 +13,6 @@ describe 'the worker paths' do
     visit root_path
     click_on "See All Jobs"
     click_on 'click here to claim it now'
-    expect(page).to have_content "Job2:"
+    expect(page).to have_content ('* '+job.title)
   end
 end
