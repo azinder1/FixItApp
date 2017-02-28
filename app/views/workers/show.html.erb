@@ -18,12 +18,12 @@
     <ul>
       <div id= "active_jobs">
         <% current_worker.jobs.each do |job| %>
-        <%= content_tag :div , id: "job_active_" + job.id.to_s do %>
-        <% if job.job_status == 2 %>
-        <li><%= link_to job.title, job_path(job) %></li>
-        <%= link_to "click here if the job is complete", job_path(job, :job_status => 3), :method => "patch", remote: true %>
-        <% end %>
-        <% end %>
+            <% if job.job_status == 2 %>
+              <%= content_tag :div , id: "job_active_" + job.id.to_s do %>
+              <li><%= link_to job.title, job_path(job) %></li>
+              <%= link_to "click here if the job is complete", job_path(job, :job_status => 3), :method => "patch", remote: true %>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
     </ul>
@@ -33,11 +33,11 @@
     <ul>
       <div id= "completed_jobs">
         <% current_worker.jobs.each do |job| %>
-        <%= content_tag :div , id: "job_complete_" + job.id.to_s do %>
-        <% if job.job_status == 3 %>
-        <li><%= link_to job.title, job_path(job) %></li>
-        <% end %>
-        <% end %>
+          <% if job.job_status == 3 %>
+            <%= content_tag :div , id: "job_complete_" + job.id.to_s do %>
+            <li><%= link_to job.title, job_path(job) %></li>
+            <% end %>
+          <% end %>
         <% end %>
       </div>
     </ul>
