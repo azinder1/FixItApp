@@ -5,12 +5,14 @@
 <ul>
   <% @jobs.each do |job| %>
     <%= content_tag :div , id: "job_" + job.id.to_s do %>
-      <li><%= link_to job.title, job_path(job) %></li>
-      <% if current_worker %>
-        <% if job.job_status == 0 %>
-          <%= link_to "click here to claim it now", job_path(job, :job_status => 1), :method => "patch", remote: true %>
-        <% else %>
-          <p>Someone has already claimed this job.</p>
+      <% if job.job_status != 3 %>
+        <li><%= link_to job.title, job_path(job) %></li>
+        <% if current_worker %>
+          <% if job.job_status == 0 %>
+            <%= link_to "click here to claim it now", job_path(job, :job_status => 1), :method => "patch", remote: true %>
+          <% else %>
+            <p>Someone has already claimed this job.</p>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>
